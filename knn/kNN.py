@@ -61,7 +61,7 @@ def img2vector(filename):
         for i in range(32):
             line = f.readline()
             for j in range(32):
-                returnVec[0,32*i+j] = line(line[j])
+                returnVec[0,32*i+j] = int(line[j])
     return returnVec
 
 
