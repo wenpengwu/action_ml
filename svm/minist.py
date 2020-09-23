@@ -40,7 +40,7 @@ def test_digits(kTup=('rbf',10)):
     m, n = x_data.shape
     errors = 0
     for i in range(m):
-        kernel_e_val = kernel_trans(sv_s, x_data[i, :], ('rbf', kl))
+        kernel_e_val = kernel_trans(sv_s, x_data[i, :], kTup)
         predict = kernel_e_val.T * np.multiply(label_sv, alphas[sv_inx]) + b
         if np.sign(predict) != np.sign(y_data[i]): errors += 1
     print('训练数据集错误率%f' % (float(errors) / m))
@@ -49,7 +49,7 @@ def test_digits(kTup=('rbf',10)):
     x_test, y_test = np.mat(x_test), np.mat(y_test).transpose()
     m, n = x_test.shape
     for i in range(m):
-        kernel_e_val = kernel_trans(sv_s, x_data[i, :], ('rbf', kl))
+        kernel_e_val = kernel_trans(sv_s, x_data[i, :], kTup)
         predict = kernel_e_val.T * np.multiply(label_sv, alphas[sv_inx]) + b
         if np.sign(predict) != np.sign(y_data[i]): errors += 1
     print('测试数据集错误率%f' % (float(errors) / m))
